@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download project
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install Java
@@ -29,7 +29,7 @@ jobs:
       - name: Extract project
         run: |
           mkdir source
-          unzip -q GANGXTA-GitHub-Project.zip -d source
+          unzip -q GANGXTA-GitHub-Project-FIXED.zip -d source
 
       - name: Compile APK
         run: |
@@ -41,3 +41,5 @@ jobs:
         with:
           name: GANGXTA-APK
           path: source/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          
